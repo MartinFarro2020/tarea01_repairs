@@ -1,13 +1,22 @@
 import { Router } from 'express';
-import { createRepair } from './repairs.controller.js';
-import { findAllRepairs } from './repairs.controller.js';
-import { deleteRepair } from './repairs.controller.js'
-import { updateRepair } from './repairs.controller.js'
+
+import {
+    createRepair,
+    findOneRepair,
+    findAllRepairs,
+    updateRepair,
+    deleteRepair,
+} from './repairs.controller.js';
 
 export const router = Router()
 
+router
+ .route("/")
+ .get(findAllRepairs)
+ .post(createRepair)
 
-router.route("/").post(createRepair)
-router.route("/").get(findAllRepairs)
-router.route("/:id").delete(deleteRepair)
-router.route("/:id").patch(updateRepair)
+router
+ .route("/:id")
+ .get(findOneRepair)
+ .patch(updateRepair)
+ .delete(deleteRepair)

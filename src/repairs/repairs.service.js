@@ -7,7 +7,7 @@ export class RepairService{
 
     }
 
-    async findOneUsers(id){
+    async findOneUserRepair(id){
         return await Repair.findOne({
             where:{
                 userid:id,
@@ -35,14 +35,14 @@ export class RepairService{
 
     }
 
-    async updateRepair(repair,data){
-        return await repair.update(data)
+    async updateRepair(repair){
+        return await repair.update({ status: completed })
     }
 
 
 
     async deleteRepair(user){
-        return await user.update({status:cancelled})
+        return await user.update({ status: cancelled })
     }
 
 }

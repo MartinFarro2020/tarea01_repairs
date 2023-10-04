@@ -21,26 +21,6 @@ export const findAllRepairs = async (req, res) => {
     }
 }
 
-export const findOneUsers = async (req, res) => {
-    try {
-        const {id}=req.params;
-
-        const user = await repairService.findOneUsers(id)
-
-        if(!user){
-            return res.status(404).json({
-                status:'error',
-                message: `User with id: ${id} not found`
-            })
-        }
-
-        return res.json(user)
-
-    } catch (error) {
-        return res.status(500).json(error)
-    }  
-}
-
 export const findOneRepair = async (req, res) => {
     try {
         const {id}=req.params;
@@ -68,7 +48,7 @@ export const updateRepair = async(req, res) => {
 
         const {id} = req.params;
 
-        const repair = await repairService.findOneRepair(id)
+        const repair = await repairService.findOneUserRepair(id)
 
         if(!repair){
             return res.status(404).json({
@@ -77,7 +57,7 @@ export const updateRepair = async(req, res) => {
           })
          }
 
-        const updatedRepair = await repairService.updateUser(repair, req.body)
+        const updatedRepair = await repairService.updateRepair(repair, req.body)
 
     return res.json(updatedRepair)
     } catch (error) {
@@ -93,7 +73,7 @@ export const deleteRepair = async(req, res) => {
         const {id} = req.params;
     //const id = req.params.id esto es lo mismo que lo de arriba
 
-    const user =await repairService.findOneUsers(id)
+    const user =await repairService.findOneUserRepair(id)
 
     if(!user){
         return res.status(404).json({
