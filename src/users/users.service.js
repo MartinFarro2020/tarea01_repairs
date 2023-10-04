@@ -33,7 +33,7 @@ export class UserService{
     }
 
     async deleteUser(user){
-        return await user.update({status:false})
+        return await user.update({status:disabled})
     }
 
 }
