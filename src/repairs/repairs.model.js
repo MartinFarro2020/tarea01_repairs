@@ -7,20 +7,20 @@ const Repair = sequelize.define('repair', {
         allowNull: false,
         autoIncrement: true,
         type: DataTypes.INTEGER,
-        field:'repair_id'
+        field:'repair_id',
       },
     date: {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      status: {
+    status: {
         type: DataTypes.ENUM('pending','completed','cancelled'),
         allowNull: false,
       },
-      userid: {
+    userid: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'user_id'
+        field: 'user_id',
       }, 
 
 })

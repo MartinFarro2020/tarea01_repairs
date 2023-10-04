@@ -21,7 +21,6 @@ export class UserService{
 
     }
 
-
     async createUser(data){
 
         return await User.create(data)
