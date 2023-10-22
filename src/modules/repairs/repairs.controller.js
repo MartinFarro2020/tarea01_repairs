@@ -7,7 +7,7 @@ const repairService = new RepairService();
 
 export const findAllRepairs = catchAsync(async (req, res,next) => {
     
-        const repair = await repairService.findAllRepairs()
+        const repair = await repairService.findAll()
         return res.status(200).json(repair)
     
 });
@@ -24,7 +24,7 @@ export const createRepair = catchAsync(async(req,res,next) =>{
         });
     }
 
-         const repair = await repairService.createRepair(repairData)
+         const repair = await repairService.create(repairData)
 
          return res.status(200).json(repair);
 
@@ -63,7 +63,7 @@ export const deleteRepair = catchAsync(async(req, res) => {
 
     const { repair } = req;
 
-    await repairService.deleteRepair(repair)
+    await repairService.delete(repair)
 
     return res.status(204).json(null)
 

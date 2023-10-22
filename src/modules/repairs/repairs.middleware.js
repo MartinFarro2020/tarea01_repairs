@@ -7,7 +7,7 @@ export const validExistRepair = catchAsync(async(req,res,next) =>{
     
         const { id } = req.params;
          
-        const repair = await repairService.findOneRepair(id);
+        const repair = await repairService.findOne(id);
 
         if(!repair){
             return next(new AppError(`flight with id: ${id} not found!`, 404))

@@ -6,7 +6,7 @@ const userService = new UserService()
 
 export const findAllUsers = catchAsync(async(req, res,next) => {
     
-        const users = await userService.findAllUsers()
+        const users = await userService.findAll()
         return res.status(200).json(users)
     
 });
@@ -22,7 +22,7 @@ export const createUser = catchAsync(async(req, res, next) => {
         });
     }
 
-        const user = await userService.createUser(userData)
+        const user = await userService.create(userData)
         return res.status(201).json(user);
     
 });
@@ -48,7 +48,7 @@ export const findOneUsers = catchAsync(async (req, res,next) => {
     });
   }
    
-  const updateUser = await userService.updateUser(user,{email,name})
+  const updateUser = await userService.update(user,{email,name})
         return res.status(200).json(updateUser)
 
 });
@@ -56,7 +56,7 @@ export const findOneUsers = catchAsync(async (req, res,next) => {
 export const deleteUser = catchAsync(async(req, res, next) => {
 
         const { user } = req;
-        await userService.deleteUser(user)
+        await userService.delete(user)
         return res.status(204).json(null)
 
 });

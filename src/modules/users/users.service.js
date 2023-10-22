@@ -3,7 +3,7 @@ import User from "./users.model.js"
 export class UserService{
  
  
-    async findAllUsers(){
+    async findAll(){
         return await User.findAll({
             where:{
                 status: 'available'
@@ -22,17 +22,17 @@ export class UserService{
 
     }
 
-    async createUser(data){
+    async create(data){
 
         return await User.create(data)
     
     }
 
-    async updateUser(user,data){
+    async update(user,data){
         return await user.update(data)
     }
 
-    async deleteUser(user){
+    async delete(user){
         return await user.update({status:'disabled'})
     }
 

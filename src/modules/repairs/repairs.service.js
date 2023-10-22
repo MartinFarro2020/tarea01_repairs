@@ -3,8 +3,8 @@ import Repair from "./repairs.model.js";
 export class RepairService{
 
 
-    async findOneRepair(id){
-        return await Repair.findOneRepair({
+    async findOne(id){
+        return await Repair.findOne({
             where:{
                 id,
                 status: 'pending'
@@ -14,7 +14,7 @@ export class RepairService{
     }
 
     
-    async findAllRepairs(){
+    async findAll(){
         return await Repair.findAll({
             where:{
                 status: 'pending'
@@ -23,18 +23,18 @@ export class RepairService{
 
     }
 
-    async createRepair(repairData){
+    async create(repairData){
         return await Repair.create(repairData)
 
     }
 
 
-    async updateRepair(repair, repairData){
-        return await repair.update(repairData)
+    async update(repair, repairData){
+        return await repair.update({status:'completed'})
     }
 
 
-    async deleteRepair(repair){
+    async delete(repair){
         return await repair.update({ status: 'cancelled' })
     }
 
