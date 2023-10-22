@@ -1,21 +1,22 @@
 import User from "./users.model.js"
 
 export class UserService{
-
-    async findOneUsers(id){
-        return await User.findOne({
+ 
+ 
+    async findAllUsers(){
+        return await User.findAll({
             where:{
-                id,
-                status:true,
+                status: 'available'
             }
         })
 
     }
 
-    async findAllUsers(){
-        return await User.findAll({
+    async findOne(id){
+        return await User.findOne({
             where:{
-                status:true
+                id,
+                status:'available'
             }
         })
 
@@ -32,7 +33,7 @@ export class UserService{
     }
 
     async deleteUser(user){
-        return await user.update({status:disabled})
+        return await user.update({status:'disabled'})
     }
 
 }

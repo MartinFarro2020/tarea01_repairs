@@ -1,11 +1,10 @@
-import { envs } from './config/enviroments/enviromentes.js'
+import { envs } from './config/enviroments/enviroment.js'
 import app from "./app.js"
 import {authenticate , syncUp} from './config/database/database.js'
 
 
 async function main(){
     try {
-
         await authenticate()
         await syncUp()
     

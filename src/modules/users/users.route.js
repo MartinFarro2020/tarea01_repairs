@@ -8,6 +8,9 @@ import {
     deleteUser
 } from './users.controller.js'
 
+import { validExistUser } from './users.middelware.js';
+import { protect } from '../../auth/auth.middleware.js';
+
 export const router = Router();
 
 //init features
@@ -17,6 +20,8 @@ router
  .route("/")
  .get(findAllUsers)
  .post(createUser)
+
+router.use('/:id',validExistUser)
 
 router
  .route("/:id")

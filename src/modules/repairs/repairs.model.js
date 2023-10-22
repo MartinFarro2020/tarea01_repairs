@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize"
-import sequelize from "../config/database/database.js"
+import sequelize from "../../config/database/database.js"
 
 const Repair = sequelize.define('repair', {
     id: {
@@ -16,10 +16,11 @@ const Repair = sequelize.define('repair', {
     status: {
         type: DataTypes.ENUM('pending','completed','cancelled'),
         allowNull: false,
+        defaultValue: 'pending',
       },
     userid: {
-        allowNull: false,
         type: DataTypes.INTEGER,
+        allowNull: false,
         field: 'user_id',
       }, 
 
