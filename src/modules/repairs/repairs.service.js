@@ -1,5 +1,5 @@
 import Repair from "./repairs.model.js";
-
+import User from "../users/users.model.js"
 export class RepairService{
 
 
@@ -22,6 +22,27 @@ export class RepairService{
         })
 
     }
+
+
+    async findAllWithAllData(){
+        return await Repair.findAll({
+            where:{
+                status:{
+                    [Op.notIn]:['pending','completed']
+                },
+            },
+            include:[
+                {
+                    model: User,
+                    as: 'repairBelongsUser',
+                    attributes:['name']
+                }
+            ]
+        });
+    }
+
+
+
 
     async create(repairData){
         return await Repair.create(repairData)

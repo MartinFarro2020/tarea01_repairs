@@ -6,7 +6,7 @@ const userService = new UserService()
 
 export const findAllUsers = catchAsync(async(req, res,next) => {
     
-        const users = await userService.findAll()
+        const users = await userService.findAllWithAllData()
         return res.status(200).json(users)
     
 });
